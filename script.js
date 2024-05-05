@@ -48,8 +48,25 @@ function badInternet(){
 }
 async function downloadHP(){
     downloadStarted = true;
-    await new Promise(r => setTimeout(r, 20000));
-    downloadRequest = await fetch("https://raw.githubusercontent.com/CdcsImportantProjects/blog-posts/main/homepage.json")
+    try{
+        downloadRequest = await fetch("https://raw.githubusercontent.com/CdcsImportantProjects/blog-posts/main/homepage.json")
+    }
+    catch{
+        document.getElementById("loading_icon").hidden = true;
+        document.getElementById("loading_text").hidden = true;
+        document.getElementById("random_message").hidden = true;
+        document.getElementById("bad_internet").innerHTML = "<strong>Oops!</strong><p>Hm, that didn't work! Try reconnecting to the network.</p>"
+        document.getElementById("bad_internet").hidden = false;
+        return;
+    }
+    if (downloadRequest.status != 200){
+        document.getElementById("loading_icon").hidden = true;
+        document.getElementById("loading_text").hidden = true;
+        document.getElementById("random_message").hidden = true;
+        document.getElementById("bad_internet").innerHTML = "<strong>Oops!</strong><p>The repository used to host this site might have been taken down....</p><p>However it might also be:</p><p>- The fact that you're on an outdated version.</p>"
+        document.getElementById("bad_internet").hidden = false;
+        return;
+    }
     hpJSON = await downloadRequest.json()
     document.getElementById("random_line").innerText = hpJSON.random_line;
     for (post of hpJSON.posts){
