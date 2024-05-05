@@ -97,9 +97,10 @@ function animate(){
 function openCdcGH(){
     window.location.href = "https://github.com/cdc-sys"
 }
-downloadHP();
-setInterval(animate,25);
-setInterval(badInternet,1000);
+
 document.addEventListener("DOMContentLoaded", function() {
+    downloadHP();
+    setInterval(animate,25);
+    setInterval(badInternet,1000);
     document.getElementById("random_message").innerHTML = "<strong>" + random_messages[Math.floor(Math.random()*random_messages.length)] + "</strong>"
 });
