@@ -4,7 +4,16 @@ html{
     color: rgb(222, 222, 255);
     text-align: center;
 }
-
+.cdc-doodle {
+    cursor:pointer;
+    width:32;
+    height:32;
+    transition: width 0.25s, height 0.25s;
+}
+.cdc-doodle:hover{
+    width:42;
+    height:42;
+}
 .slide-in {
     animation: slide-in 0.75s forwards;
     -webkit-animation: slide-in 0.75s forwards;
@@ -84,6 +93,10 @@ separator{
     height:0px;
     border-color:rgba(222, 222, 255,0.1);
     margin:auto;
+}
+subtext {
+    font-size:15px;
+    color:rgba(222, 222, 255,0.25);
 }
 #loading_icon{
     width:32;

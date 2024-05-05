@@ -94,6 +94,9 @@ function animate(){
         break;
     }
 }
+function openCdcGH(){
+    window.location.href = "https://github.com/cdc-sys"
+}
 downloadHP();
 setInterval(animate,25);
 setInterval(badInternet,1000);
