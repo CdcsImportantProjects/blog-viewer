@@ -3,52 +3,81 @@ html{
     background-color:rgb(41, 41, 47);
     color: rgb(222, 222, 255);
 }
-
+#post-content {
+    background-color: rgba(0,0,5,0.50);
+    padding:15px;
+    text-align: center;
+    border-radius: 20px;
+}
+.cdc-doodle {
+    cursor:pointer;
+    width:32;
+    height:32;
+    transition: width 0.25s, height 0.25s;
+}
+.cdc-doodle:hover{
+    width:42;
+    height:42;
+}
 .slide-in {
     animation: slide-in 0.75s forwards;
     -webkit-animation: slide-in 0.75s forwards;
 }
-    
+.slide-out {
+    opacity:0;
+    transition: opacity 1s;
+    height:0px;
+}
 @keyframes slide-in {
     0%{transform: translateY(200%);
     opacity:0;}
     50% { transform: translateY(-15%);opacity:50; }
     100% { transform: translateY(0%);opacity:100; }
 }
-
-@-webkit-keyframes slide-in {
-    0% { -webkit-transform: translateY(200%);opacity:0; }
-    50% { -webkit-transform: translateY(-15%);opacity:50; }
-    100% { -webkit-transform: translateY(0%);opacity:100; }
+#bad_internet{
+    color:rgb(255, 212, 212);
+    font-weight: 500;
 }
-    
+iframe{
+    border-style:solid;
+    border-radius: 20px;
+    border-width:3px;
+}
 kw {
     padding: 5px;
     margin-right:5px;
     border-radius:10px;
     user-select:none;
     cursor:pointer;
+    border-width:3px;
     border-style: solid;
 }
 kw:hover{
     background-color: rgba(222, 222, 255,0.25);
 }
+br{
+    display:none;
+}
 post-title {
     font-weight:bolder;
     font-size:20px;
 }
+#posts{
+    margin:auto;
+    display:block;
+    text-align:left;
+}
 .post {
     padding:20px;
-    margin:5px;
     display:inline-block;
     border-style:solid;
     border-radius: 20px;
     margin-bottom: 15px;
     background-color: rgb(87, 87, 103);
     min-width:400px;
+    border-width:3px;
 }
 error{
-    margin:5px;
     display:block;
     padding:20px;
     margin-bottom:5px;
@@ -63,11 +92,20 @@ error{
 }
 separator{
     border-style:solid;
-    display:inline-block;
+    display:block;
     width:80%;
     border-width:1.5px;
     height:0px;
     border-color:rgba(222, 222, 255,0.1);
+    margin:auto;
+}
+subtext {
+    font-size:15px;
+    color:rgba(222, 222, 255,0.25);
+}
+#loading_icon{
+    width:32;
+    height:32;
 }
 button{
     display:block;
