@@ -2,7 +2,7 @@ toAdd = []
 let downloadingFor = 0;
 let downloadStarted = false;
 let downloadDone = false;
-random_messages = [
+/*random_messages = [
     "Waiittt!",
     "The JSON is sleeping...",
     "Cmon man... get some patience :/",
@@ -15,6 +15,13 @@ random_messages = [
     "this loading message is awesome",
     "<img id=\"loading_icon\" src=\"assets/loading-small.gif\"></img> <p>Loading the message.. Please wait!</p>",
     "<p>get soggied:</p><iframe src=\"https://soggy.cat\"></iframe>"
+]*/
+random_messages = [
+    "Why are you here?",
+    "Go away!",
+    "Stop it!!!!",
+    "GET OUT",
+    "<h1>Please, get out.</h1>"
 ]
 function addPost(post){
     postElement = document.createElement("div")
@@ -63,7 +70,7 @@ async function downloadHP(){
         document.getElementById("loading_icon").hidden = true;
         document.getElementById("loading_text").hidden = true;
         document.getElementById("random_message").hidden = true;
-        document.getElementById("bad_internet").innerHTML = "<strong>Oops!</strong><p>The repository used to host this site might have been taken down....</p><p>However it might also be:</p><p>- The fact that you're on an outdated version.</p>"
+        document.getElementById("bad_internet").innerHTML = "<strong>Oops!</strong><p>Unfortunately, the owner of this website has decided to take the homepage down, and most likely the rest of the site.</p><p>You might wanna ask them or wait for a site update, however if it stays this way it might be the end.</p><p>Have fun!</p>"
         document.getElementById("bad_internet").hidden = false;
         return;
     }

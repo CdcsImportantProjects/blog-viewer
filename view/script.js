@@ -1,4 +1,28 @@
 toAdd = []
+codes = {
+    "404: Not Found":{
+        text:"This post has been deleted.",
+        replace_info:true,
+        info_text:"[deleted]"
+    },
+    "[RM_001]\n":{
+        text:"This post was way too personal to show here.",
+        replace_info:false
+    },
+    "[RM_002]\n":{
+        text:"This post wasn't important.",
+        replace_info:false
+    },
+    "[RM_003]\n":{
+        text:"This post was for testing.",
+        replace_info:false
+    },
+    "[RM_004]\n":{
+        text:"This post wasn't meant for you.",
+        replace_info:true,
+        info_text:""
+    },
+}
 function markdownParser(md) {
     // Replace headers
     md = md.replaceAll(/^###### (.*$)/gim, '<h6>$1</h6>');
@@ -88,14 +112,25 @@ async function downloadPost(post){
 async function downloadPostContent(){
     document.getElementById("download").style = "display:none;";
     document.getElementById("load").hidden = false;
+    document.querySelector("[class=\"post slide-in\"]").appendChild(document.getElementById("load"));
     downloadRequest = await fetch(postJSON.file_url)
     document.getElementById("load").hidden = true;
     md = await downloadRequest.text()
     element = document.createElement("div")
-    element.innerHTML = markdownParser(md);
+    if (codes[md] == undefined){
+        element.innerHTML = markdownParser(md);
+    }
+    else{
+        element.innerHTML = `<em>${codes[md].text}</em>`;
+        if (codes[md].replace_info){
+            for (e of document.querySelector("[class=\"post slide-in\"]").childNodes){
+                e.innerHTML = `<em>${codes[md].info_text}</em>`;
+            }
+        }
+    }
     element.id = "post-content"
     element.setAttribute("class","slide-in")
-    document.body.appendChild(element);
+    document.querySelector("[class=\"post slide-in\"]").appendChild(element);
 }
 function scrollChapterIntoView(e){
     label = e.getAttribute("aria-text")
@@ -106,6 +141,8 @@ function scrollChapterIntoView(e){
 function animate(){
     for (el of toAdd){
         document.getElementById("posts").appendChild(el)
+        document.querySelector("[id=\"download\"]").hidden = true;
+        el.appendChild(document.querySelector("[id=\"download\"]"));
         toAdd.splice(toAdd.indexOf(el),1)
         break;
     }
